@@ -21,6 +21,10 @@ export default class TaskAddComponent extends Component<TaskAddSignature> {
   @service('tasks') tasksService?: TasksService;
   @tracked newTaskDesc = '';
 
+  get disableAddBtn() {
+    return this.newTaskDesc.trim() === "";
+  }
+
   @action
   async onAddTask() {
     if (this.newTaskDesc.trim() === '') return;
@@ -30,18 +34,7 @@ export default class TaskAddComponent extends Component<TaskAddSignature> {
   }
 
   @action
-  onChangeNewTaskInput(ev: Event) {
-    assert(
-      `Expected input event handler to be used an an 'input' element,`,
-      ev.target instanceof HTMLInputElement,
-    );
-    this.newTaskDesc = ev.target.value;
-  }
-
-  @action
-  onInputKeyPress(ev: KeyboardEvent) {
-    if (ev.key == 'Enter') {
-      this.onAddTask();
-    }
+  onEnter() {
+    this.onAddTask();
   }
 }

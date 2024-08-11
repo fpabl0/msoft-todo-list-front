@@ -16,8 +16,24 @@ module('Integration | Component | task/add', function (hooks) {
     await render(hbs`<Task::Add />`);
 
     assert.dom('#add-task-btn').hasText('Agregar');
+    assert.dom('#add-task-btn').isDisabled();
     assert.dom('#add-task-input').exists();
     assert.dom('#add-task-input').hasProperty('placeholder', 'Nueva tarea');
+  });
+
+  test('should disable button if input is empty', async function (assert) {
+    await render(hbs`<Task::Add />`);
+
+    assert.dom('#add-task-btn').isDisabled();
+
+    await typeIn('#add-task-input', 'My first task');
+    assert.dom('#add-task-btn').isEnabled();
+
+    await click('#add-task-btn');
+    assert.dom('#add-task-btn').isDisabled();
+
+    await typeIn('#add-task-input', 'My other task');
+    assert.dom('#add-task-btn').isEnabled();
   });
 
   test('should empty and blur the input when clicking Add or Enter', async function (assert) {
@@ -35,7 +51,7 @@ module('Integration | Component | task/add', function (hooks) {
     assert.dom('#add-task-input').hasValue('My second task');
     assert.dom('#add-task-input').isFocused();
 
-    await triggerKeyEvent('#add-task-input', 'keypress', 'Enter');
+    await triggerKeyEvent('#add-task-input', 'keyup', 'Enter');
     assert.dom('#add-task-input').hasValue('');
     assert.dom('#add-task-input').isNotFocused();
   });
@@ -59,7 +75,7 @@ module('Integration | Component | task/add', function (hooks) {
     assert.expect(1);
 
     await typeIn('#add-task-input', 'My second task');
-    await triggerKeyEvent('#add-task-input', 'keypress', 'Enter');
+    await triggerKeyEvent('#add-task-input', 'keyup', 'Enter');
     assert.expect(2);
   });
 });
