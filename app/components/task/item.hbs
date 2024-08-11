@@ -4,7 +4,7 @@
   {{#if this.editMode }}
     <Input 
       id="update-task-input-{{@task.id}}"
-      type="text" 
+      @type="text" 
       class="form-control form-control-sm me-3" 
       placeholder="{{@task.description}}"
       @value={{ this.updatedTaskDesc }}
@@ -13,8 +13,8 @@
     />
   {{else}}
     <div class="app-small-text">
-      <input class="form-check-input me-1" type="checkbox" value="" checked={{@task.completed}} {{on 'change' this.onToggleDoneTask }}>
-      <label class="form-check-label">{{@task.description}}</label>
+      <input id="complete-task-check-{{@task.id}}" class="form-check-input me-1" type="checkbox" value="" checked={{@task.completed}} {{on 'change' this.onToggleDoneTask }}>
+      <label class="form-check-label" for="complete-task-check-{{@task.id}}">{{@task.description}}</label>
     </div>
   {{/if}}
 
@@ -22,14 +22,14 @@
   <div class="d-flex align-items-center gap-2">
   {{#if this.editMode }}
     <button class="app-small-circle-btn" type="button" {{on 'click' this.onExitEditMode }}>
-      <img src="/assets/cancel.svg" width="16" />
+      <img src="/assets/cancel.svg" alt="cancel" width="16" />
     </button>
     <button 
           class="app-small-circle-btn" 
           type="button" 
           disabled={{this.disableUpdateBtn}} 
           {{on 'click' this.onUpdateTask }}>
-      <img src="{{ if this.disableUpdateBtn '/assets/check-disabled.svg' '/assets/check.svg'}}" width="16" />
+      <img src="{{ if this.disableUpdateBtn '/assets/check-disabled.svg' '/assets/check.svg'}}" width="16" alt="check" />
     </button>
   {{else}}
     <button class="app-small-circle-btn" type="button" {{on 'click' this.onEnterEditMode }}>

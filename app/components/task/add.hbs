@@ -1,10 +1,9 @@
 <div class="input-group mb-4">
   <Input 
     id="add-task-input"
-    type="text" 
+    @type="text" 
     class="form-control" 
     placeholder="Nueva tarea" 
-    aria-label="Nueva tarea" 
     aria-describedby="add-task-btn"
     @value={{this.newTaskDesc}}
     @enter={{this.onEnter}}
