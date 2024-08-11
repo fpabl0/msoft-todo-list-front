@@ -1,0 +1,9 @@
+<ul class="list-group">
+  {{#if this.haveNoTasks }}
+    <p class="app-small-text mt-3 text-center">No tiene tareas agregadas</p>
+  {{else}}
+    {{#each this.tasksService.tasks as |task|}}
+      <TaskItem @task={{task}} />
+    {{/each}}
+  {{/if}}
+</ul>

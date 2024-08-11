@@ -1,0 +1,34 @@
+{{page-title "Login"}}
+<div class="container-fluid d-flex align-items-center py-4 bg-body-tertiary">
+  <main class="login-form w-100 m-auto">
+    <form>
+      <div class="d-flex justify-content-center align-items-center">
+      <img class="mb-4" src="/assets/todo-list-icon.svg" alt="" width="72" >
+      </div>
+      <h1 class="h3 mb-3 text-center fw-normal">Iniciar sesión</h1>
+
+      <div class="app-form-fields mb-3">
+        <div class="form-floating">
+          <input type="email" class="form-control" id="email" placeholder="name@example.com">
+          <label for="email">Correo electrónico</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="true">
+          <label for="password">Contraseña</label>
+        </div>
+      </div>
+      
+      <button class="btn btn-dark w-100 py-2" type="submit">Ingresar</button>
+
+      <hr class="mt-4 mb-3 border-secondary-subtle">
+
+      <div class="d-flex justify-content-end">
+        <LinkTo class="link-secondary text-decoration-none" @route='register'>
+          Crear nueva cuenta
+        </LinkTo>
+      </div>
+
+      <p class="mt-5 mb-3 text-body-secondary text-center" style="opacity: .5;">© Copyright 2024 - Grupo 1</p>
+    </form>
+  </main>
+</div>

@@ -1,0 +1,21 @@
+<div class="input-group mb-4">
+  <input 
+    id="add-task-input"
+    type="text" 
+    class="form-control" 
+    placeholder="Nueva tarea" 
+    aria-label="Nueva tarea" 
+    aria-describedby="add-task-btn"
+    {{on 'input' this.onChangeNewTaskInput }}
+    {{on 'keypress' this.onInputKeyPress }}
+    value="{{this.newTaskDesc}}"
+  >
+  <button 
+    id="add-task-btn"
+    class="btn btn-outline-dark btn-sm" 
+    type="button" 
+    {{on 'click' this.onAddTask }}
+  >
+    Agregar
+  </button>
+</div>

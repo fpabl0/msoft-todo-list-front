@@ -1,1 +1,51 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+
+@import url("nav-bar.css");
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.app-small-text {
+  font-size: 0.875rem;
+}
+
+.app-small-circle-btn {
+  background-color: rgb(245 245 245);
+  border: 0;
+  border-radius: 20px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  max-width: 330px;
+  padding: 1rem;
+}
+
+.app-form-fields .form-floating:focus-within {
+  z-index: 2;
+}
+
+.app-form-fields div:first-child input {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-bottom: -1px;
+}
+
+.app-form-fields div:not(:first-child, :last-child) input {
+  border-radius: 0;
+  margin-bottom: -1px;
+}
+
+.app-form-fields div:last-child input {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

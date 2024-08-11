@@ -1,0 +1,17 @@
+<nav class="navbar bg-body-tertiary d-flex flex-row pe-3">
+  <div class="container-fluid app-navbar-title">
+    <div class="navbar-brand">
+      <img src="/assets/todo-list-icon.svg" alt="Todo List App" width="30" height="24" class="d-inline-block align-text-top">
+      {{this.getTitle}}
+    </div>
+  </div>
+  <div class="d-flex flex-column justify-content-center align-items-end">
+    <button 
+      class="btn btn-dark app-navbar-logout-btn"  
+      type="button"
+      {{on "click" this.onLogout}}
+    >
+      Cerrar sesión
+    </button>
+  </div>
+</nav>
