@@ -1,0 +1,40 @@
+<Auth::BaseForm
+  @onSubmit={{this.onRegister}}
+  @title="Registrarse"
+  @submitBtnText="Registrar cuenta"
+>
+
+  <TextFormField 
+    @id="register-name"
+    @label="Nombre"
+    @data={{this.formData.fields.name}}
+    placeholder="Escribe su nombre"
+  />
+
+  <TextFormField 
+    @id="register-email"
+    @type="email"
+    @label="Correo electrónico"
+    @data={{this.formData.fields.email}}
+    placeholder="name@example.com"
+  />
+
+  <TextFormField 
+    @id="register-password"
+    @type="password"
+    @label="Contraseña"
+    @data={{this.formData.fields.password}}
+    placeholder="Escriba una contraseña" 
+    autocomplete="false"
+  />
+
+  <TextFormField 
+    @id="register-confirm-password"
+    @type="password"
+    @label="Confirmar contraseña"
+    @data={{this.formData.fields.confirmPassword}}
+    placeholder="Confirme su contraseña" 
+    autocomplete="false"
+  />
+
+</Auth::BaseForm>

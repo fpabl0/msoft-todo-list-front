@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'todo-list/tests/helpers';
 import { click, render, triggerKeyEvent, typeIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { MockTasksService } from "todo-list/tests/helpers/mock-tasks-service";
+import { MockTasksService } from 'todo-list/tests/helpers/mock-tasks-service';
 
 module('Integration | Component | add-task', function (hooks) {
   setupRenderingTest(hooks);
@@ -47,9 +47,9 @@ module('Integration | Component | add-task', function (hooks) {
     s.onCreateTask = async (desc: string) => {
       called++;
       if (called == 1) {
-        assert.equal(desc, "My important task");
+        assert.equal(desc, 'My important task');
       } else if (called == 2) {
-        assert.equal(desc, "My second task");
+        assert.equal(desc, 'My second task');
       }
     };
 

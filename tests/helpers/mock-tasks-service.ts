@@ -1,5 +1,5 @@
-import Service from "@ember/service";
-import type { TestContext } from "@ember/test-helpers";
+import Service from '@ember/service';
+import type { TestContext } from '@ember/test-helpers';
 
 type ServiceParams = {
   onLoadTasks?: () => Promise<void>;
@@ -10,13 +10,12 @@ type ServiceParams = {
 };
 
 export class MockTasksService extends Service {
-
   static registerFor(c: TestContext) {
     c.owner.register('service:tasks', MockTasksService);
   }
 
   static instanceFor(c: TestContext) {
-    return (c.owner.lookup('service:tasks') as any) as MockTasksService;
+    return c.owner.lookup('service:tasks') as any as MockTasksService;
   }
 
   onLoadTasks?: () => Promise<void>;
@@ -47,7 +46,8 @@ export class MockTasksService extends Service {
   }
 
   async updateTaskComplete(id: number, complete: boolean): Promise<void> {
-    if (this.onUpdateTaskComplete !== undefined) this.onUpdateTaskComplete!(id, complete);
+    if (this.onUpdateTaskComplete !== undefined)
+      this.onUpdateTaskComplete!(id, complete);
   }
 
   async deleteTask(id: number): Promise<void> {

@@ -1,0 +1,19 @@
+<div class="form-floating">
+  <Input
+    ...attributes
+    class="form-control" 
+    id="{{@id}}"
+    @type="{{this.inputType}}"
+    @value={{@data.value}}
+    {{ on 'focusout' this.onFocusOut }}
+    {{ on 'input' this.onInput }}
+  />
+  <label for="{{@id}}">{{@label}}</label>
+  {{#if this.showErrorIfAny }}
+    {{#if this.hasError }}
+      <div class="invalid-feedback d-block mb-2">
+        * {{ this.errorMessage }}
+      </div>
+    {{/if}}
+  {{/if}}
+</div>

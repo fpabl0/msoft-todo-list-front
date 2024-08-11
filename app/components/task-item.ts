@@ -3,8 +3,8 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import type { Task } from 'todo-list/bmodels/task';
-import { service } from "@ember/service";
-import type TasksService from "todo-list/services/tasks";
+import { service } from '@ember/service';
+import type TasksService from 'todo-list/services/tasks';
 
 export interface TaskItemSignature {
   // The arguments accepted by the component
@@ -36,7 +36,9 @@ export default class TaskItemComponent extends Component<TaskItemSignature> {
     this.updatedTaskDesc = this.args.task.description;
     this.editMode = true;
     setTimeout(() => {
-      document.getElementById(`update-task-input-${this.args.task.id}`)?.focus();
+      document
+        .getElementById(`update-task-input-${this.args.task.id}`)
+        ?.focus();
     }, 50);
   }
 
@@ -48,7 +50,10 @@ export default class TaskItemComponent extends Component<TaskItemSignature> {
   @action
   async onUpdateTask() {
     if (this.updatedTaskDesc.trim() == '') return;
-    await this.tasksService?.updateTaskDesc(this.args.task.id, this.updatedTaskDesc);
+    await this.tasksService?.updateTaskDesc(
+      this.args.task.id,
+      this.updatedTaskDesc,
+    );
     this.onExitEditMode();
   }
 
@@ -79,6 +84,9 @@ export default class TaskItemComponent extends Component<TaskItemSignature> {
       `Expected input event handler to be used an an 'input' element,`,
       ev.target instanceof HTMLInputElement,
     );
-    await this.tasksService?.updateTaskComplete(this.args.task.id, ev.target.checked);
+    await this.tasksService?.updateTaskComplete(
+      this.args.task.id,
+      ev.target.checked,
+    );
   }
 }

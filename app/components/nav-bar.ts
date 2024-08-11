@@ -1,5 +1,8 @@
 import { action } from '@ember/object';
+import type RouterService from '@ember/routing/router-service';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import type AuthService from 'todo-list/services/auth';
 
 export interface NavBarSignature {
   // The arguments accepted by the component
@@ -13,13 +16,16 @@ export interface NavBarSignature {
 }
 
 export default class NavBarComponent extends Component<NavBarSignature> {
+  @service router?: RouterService;
+  @service('auth') authService?: AuthService;
+
   get getTitle() {
-    const name = 'Juan Pérez';
-    return `Tareas de ${name}`;
+    return `Tareas de ${this.authService?.userName}`;
   }
 
   @action
-  onLogout() {
-    console.log('TODO logout action');
+  async onLogout() {
+    await this.authService?.logout();
+    this.router?.transitionTo('login');
   }
 }

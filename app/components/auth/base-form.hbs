@@ -1,0 +1,12 @@
+<form {{on 'submit' @onSubmit}} novalidate>
+  <div class="d-flex justify-content-center align-items-center">
+  <img class="mb-4" src="/assets/todo-list-icon.svg" alt="" width="72" >
+  </div>
+  <h1 class="h3 mb-3 text-center fw-normal">{{@title}}</h1>
+
+  <div class="app-form-fields mb-3">
+    {{yield}}
+  </div>
+  
+  <button class="btn btn-dark w-100 py-2" type="submit">{{@submitBtnText}}</button>
+</form>

@@ -2,8 +2,8 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
-import { service } from "@ember/service";
-import type TasksService from "todo-list/services/tasks";
+import { service } from '@ember/service';
+import type TasksService from 'todo-list/services/tasks';
 
 export interface AddTaskSignature {
   // The arguments accepted by the component
@@ -22,7 +22,7 @@ export default class AddTaskComponent extends Component<AddTaskSignature> {
 
   @action
   async onAddTask() {
-    if (this.newTaskDesc.trim() === "") return;
+    if (this.newTaskDesc.trim() === '') return;
     await this.tasksService?.createTask(this.newTaskDesc);
     this.newTaskDesc = '';
     document.getElementById('add-task-input')?.blur(); // TODO should blur?

@@ -14,7 +14,10 @@ export default class TasksService extends Service {
     console.log(`TODO service: create task with desc: "${desc}"`);
     this.tasks = [
       ...this.tasks,
-      new Task(new Date().getMilliseconds(), { description: desc, completed: false }),
+      new Task(new Date().getMilliseconds(), {
+        description: desc,
+        completed: false,
+      }),
     ];
   }
 

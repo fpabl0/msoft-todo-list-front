@@ -1,0 +1,21 @@
+<Auth::BaseForm
+  @onSubmit={{this.onLogin}}
+  @title="Iniciar sesión"
+  @submitBtnText="Ingresar"
+>
+  <TextFormField 
+    @id="email"
+    @label="Correo electrónico"
+    @data={{this.formData.fields.email}}
+    placeholder="name@example.com" 
+  />
+
+  <TextFormField 
+    @id="password"
+    @type="password"
+    @label="Contraseña"
+    @data={{this.formData.fields.password}}
+    placeholder="Password" 
+    autocomplete="false"
+  />
+</Auth::BaseForm>
