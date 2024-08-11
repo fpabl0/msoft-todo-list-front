@@ -1,3 +1,3 @@
-import Route from '@ember/routing/route';
+import { UnauthenticatedRoute } from "todo-list/utils/unauthenticated-route";
 
-export default class LoginRoute extends Route {}
+export default class LoginRoute extends UnauthenticatedRoute { }

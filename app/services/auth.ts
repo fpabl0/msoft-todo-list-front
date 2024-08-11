@@ -5,6 +5,10 @@ export default class AuthService extends Service {
   @tracked token: string | null = null;
   userName: string | null = null;
 
+  get isLoggedIn() {
+    return this.token !== null;
+  }
+
   async login(email: string, password: string): Promise<void> {
     console.log(`TODO login `, { email, password });
     this.token = 'some-token';

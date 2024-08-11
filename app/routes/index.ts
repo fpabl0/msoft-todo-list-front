@@ -1,13 +1,18 @@
 import Route from '@ember/routing/route';
-import type RouterService from '@ember/routing/router-service';
-import type Transition from '@ember/routing/transition';
 import { service } from '@ember/service';
+
+import type RouterService from '@ember/routing/router-service';
+import type AuthService from "todo-list/services/auth";
 
 export default class IndexRoute extends Route {
   @service router?: RouterService;
+  @service('auth') authService?: AuthService;
 
-  beforeModel(transition: Transition) {
-    console.log('TODO redirect');
-    this.router?.transitionTo('/login');
+  beforeModel() {
+    if (this.authService!.isLoggedIn) {
+      this.router?.replaceWith('home');
+    } else {
+      this.router?.replaceWith('login');
+    }
   }
 }
