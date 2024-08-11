@@ -9,6 +9,7 @@
       placeholder="{{@task.description}}"
       @value={{ this.updatedTaskDesc }}
       @enter={{ this.onUpdateDescInputEnter }}
+      autocomplete="off"
     />
   {{else}}
     <div class="app-small-text">
