@@ -1,5 +1,3 @@
-
-
 export class FormData<K extends string> {
   fields: { [key in K]: FieldData };
 
@@ -7,8 +5,8 @@ export class FormData<K extends string> {
     this.fields = fields;
   }
 
-  isValid(opts?: { force?: boolean; }) {
-    for (let n of (Object.keys(this.fields) as K[])) {
+  isValid(opts?: { force?: boolean }) {
+    for (const n of Object.keys(this.fields) as K[]) {
       const err = this.fields[n]?.validate({ force: opts?.force ?? false });
       if (err !== null) {
         return false;
@@ -28,7 +26,7 @@ export class FieldData {
     validators?: ((v: string) => string | null)[];
     isValid?: boolean;
   }) {
-    this.value = data.value ?? "";
+    this.value = data.value ?? '';
     this.validators = data.validators ?? [];
   }
 
@@ -36,9 +34,9 @@ export class FieldData {
     this._onValidate = fn;
   }
 
-  validate(opts?: { value?: string, force?: boolean; }): string | null {
+  validate(opts?: { value?: string; force?: boolean }): string | null {
     let errMsg: string | null = null;
-    for (let validator of this.validators) {
+    for (const validator of this.validators) {
       const ret = validator(opts?.value ?? this.value);
       if (ret !== null) {
         errMsg = ret;
@@ -49,5 +47,4 @@ export class FieldData {
     this._onValidate(errMsg, opts?.force ?? false);
     return errMsg;
   }
-
 }

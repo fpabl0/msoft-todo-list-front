@@ -1,9 +1,10 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { tracked } from '@glimmer/tracking';
-import type { Task } from 'todo-list/bmodels/task';
 import { service } from '@ember/service';
+
+import type { Task } from 'todo-list/bmodels/task';
 import type TasksService from 'todo-list/services/tasks';
 
 export interface TaskItemSignature {

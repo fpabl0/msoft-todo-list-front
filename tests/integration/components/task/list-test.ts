@@ -1,14 +1,14 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'todo-list/tests/helpers';
-import { find, render, waitFor, waitUntil } from '@ember/test-helpers';
+import { render, waitFor, waitUntil } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { Task } from 'todo-list/bmodels/task';
 
-module('Integration | Component | task-list', function (hooks) {
+module('Integration | Component | task/list', function (hooks) {
   setupRenderingTest(hooks);
 
   test('show message when no tasks', async function (assert) {
-    await render(hbs`<TaskList />`);
+    await render(hbs`<Task::List />`);
     assert.dom('p').hasText('No tiene tareas agregadas');
     assert.dom('li').doesNotExist();
   });
@@ -20,7 +20,7 @@ module('Integration | Component | task-list', function (hooks) {
         new Task(1, { description: 'Comprar galletas', completed: false }),
         new Task(2, { description: 'Vender radio', completed: true }),
       ]);
-    await render(hbs`<TaskList />`);
+    await render(hbs`<Task::List />`);
     assert.dom().doesNotContainText('No tiene tareas agregadas');
     assert.dom().containsText('Comprar galletas');
     assert.dom().containsText('Vender radio');
@@ -33,7 +33,7 @@ module('Integration | Component | task-list', function (hooks) {
       new Task(2, { description: 'Vender radio', completed: true }),
     ]);
 
-    await render(hbs`<TaskList />`);
+    await render(hbs`<Task::List />`);
     assert.dom().containsText('Comprar galletas');
     assert.dom().containsText('Vender radio');
     assert.dom().doesNotContainText('Ultima tarea');
@@ -52,7 +52,7 @@ module('Integration | Component | task-list', function (hooks) {
       new Task(2, { description: 'Vender radio', completed: true }),
     ]);
 
-    await render(hbs`<TaskList />`);
+    await render(hbs`<Task::List />`);
     assert.dom().containsText('Comprar galletas');
     assert.dom().containsText('Vender radio');
 

@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'todo-list/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('Integration | Component | task-item', function (hooks) {
+module('Integration | Component | task/item', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
@@ -11,7 +11,7 @@ module('Integration | Component | task-item', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    // await render(hbs`<TaskItem />`);
+    // await render(hbs`<Task::Item />`);
     assert.ok(true);
   });
 });

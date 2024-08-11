@@ -1,7 +1,7 @@
-import { action } from "@ember/object";
+import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import { tracked } from "@glimmer/tracking";
-import type { FieldData } from "todo-list/bmodels/form-data";
+import { tracked } from '@glimmer/tracking';
+import type { FieldData } from 'todo-list/bmodels/form-data';
 
 export interface TextFormFieldSignature {
   // The arguments accepted by the component
@@ -23,7 +23,7 @@ export default class TextFormFieldComponent extends Component<TextFormFieldSigna
   @tracked showErrorIfAny = false;
   @tracked errorMessage: string | null = null;
 
-  constructor(owner: any, args: TextFormFieldSignature["Args"]) {
+  constructor(owner: any, args: TextFormFieldSignature['Args']) {
     super(owner, args);
     this.args.data.registerOnValidate(this.onValidate.bind(this));
   }
@@ -34,7 +34,7 @@ export default class TextFormFieldComponent extends Component<TextFormFieldSigna
 
   get inputType() {
     if (this.args.type === undefined) {
-      return "text";
+      return 'text';
     }
     return this.args.type;
   }
@@ -46,7 +46,7 @@ export default class TextFormFieldComponent extends Component<TextFormFieldSigna
 
   @action
   onInput(ev: Event) {
-    const input = (ev.target as HTMLInputElement);
+    const input = ev.target as HTMLInputElement;
     this.args.data.validate({ value: input.value });
   }
 

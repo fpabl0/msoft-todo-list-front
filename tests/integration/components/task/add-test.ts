@@ -2,9 +2,10 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'todo-list/tests/helpers';
 import { click, render, triggerKeyEvent, typeIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { MockTasksService } from 'todo-list/tests/helpers/mock-tasks-service';
 
-module('Integration | Component | add-task', function (hooks) {
+import { MockTasksService } from "todo-list/tests/helpers/mock-tasks-service";
+
+module('Integration | Component | task/add', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -12,7 +13,7 @@ module('Integration | Component | add-task', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<AddTask />`);
+    await render(hbs`<Task::Add />`);
 
     assert.dom('#add-task-btn').hasText('Agregar');
     assert.dom('#add-task-input').exists();
@@ -20,7 +21,7 @@ module('Integration | Component | add-task', function (hooks) {
   });
 
   test('should empty and blur the input when clicking Add or Enter', async function (assert) {
-    await render(hbs`<AddTask />`);
+    await render(hbs`<Task::Add />`);
 
     await typeIn('#add-task-input', 'My first task');
     assert.dom('#add-task-input').hasValue('My first task');
@@ -40,7 +41,7 @@ module('Integration | Component | add-task', function (hooks) {
   });
 
   test('should call the service createTask function when click on button or enter', async function (assert) {
-    await render(hbs`<AddTask />`);
+    await render(hbs`<Task::Add />`);
 
     let called = 0;
     const s = MockTasksService.instanceFor(this);

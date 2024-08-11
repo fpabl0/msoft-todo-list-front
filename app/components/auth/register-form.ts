@@ -1,10 +1,10 @@
 import { action } from '@ember/object';
-import type RouterService from "@ember/routing/router-service";
-import { service } from "@ember/service";
+import type RouterService from '@ember/routing/router-service';
+import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { FieldData, FormData } from "todo-list/bmodels/form-data";
-import type AuthService from "todo-list/services/auth";
-import appValidators from "todo-list/validators/app-validators";
+import { FieldData, FormData } from 'todo-list/bmodels/form-data';
+import type AuthService from 'todo-list/services/auth';
+import appValidators from 'todo-list/validators/app-validators';
 
 export interface AuthRegisterFormSignature {
   // The arguments accepted by the component
@@ -23,19 +23,25 @@ export default class AuthRegisterFormComponent extends Component<AuthRegisterFor
 
   formData = new FormData<'name' | 'email' | 'password' | 'confirmPassword'>({
     name: new FieldData({ validators: [appValidators.required()] }),
-    email: new FieldData({ validators: [appValidators.required(), appValidators.email()] }),
-    password: new FieldData({ validators: [appValidators.required(), appValidators.minLength(6)] }),
+    email: new FieldData({
+      validators: [appValidators.required(), appValidators.email()],
+    }),
+    password: new FieldData({
+      validators: [appValidators.required(), appValidators.minLength(6)],
+    }),
     confirmPassword: new FieldData({}),
   });
 
-  constructor(owner: any, args: AuthRegisterFormSignature["Args"]) {
+  constructor(owner: any, args: AuthRegisterFormSignature['Args']) {
     super(owner, args);
-    this.formData.fields.confirmPassword.validators = [this.validateConfirmPassword.bind(this)];
+    this.formData.fields.confirmPassword.validators = [
+      this.validateConfirmPassword.bind(this),
+    ];
   }
 
   validateConfirmPassword(v: string) {
     if (this.formData.fields.password.value !== v) {
-      return "Las contraseñas deben coincidir.";
+      return 'Las contraseñas deben coincidir.';
     }
     return null;
   }

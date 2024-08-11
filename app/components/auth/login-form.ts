@@ -2,9 +2,9 @@ import { action } from '@ember/object';
 import type RouterService from '@ember/routing/router-service';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { FieldData, FormData } from "todo-list/bmodels/form-data";
+import { FieldData, FormData } from 'todo-list/bmodels/form-data';
 import type AuthService from 'todo-list/services/auth';
-import appValidators from "todo-list/validators/app-validators";
+import appValidators from 'todo-list/validators/app-validators';
 
 export interface AuthLoginFormSignature {
   // The arguments accepted by the component
@@ -22,8 +22,12 @@ export default class AuthLoginFormComponent extends Component<AuthLoginFormSigna
   @service('auth') authService?: AuthService;
 
   formData = new FormData<'email' | 'password'>({
-    email: new FieldData({ validators: [appValidators.required(), appValidators.email()] }),
-    password: new FieldData({ validators: [appValidators.required(), appValidators.minLength(6)] }),
+    email: new FieldData({
+      validators: [appValidators.required(), appValidators.email()],
+    }),
+    password: new FieldData({
+      validators: [appValidators.required(), appValidators.minLength(6)],
+    }),
   });
 
   @action

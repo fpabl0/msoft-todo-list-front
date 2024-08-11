@@ -1,5 +1,6 @@
-import { service } from '@ember/service';
 import Component from '@glimmer/component';
+import { service } from '@ember/service';
+
 import type TasksService from 'todo-list/services/tasks';
 
 export interface TaskListSignature {
