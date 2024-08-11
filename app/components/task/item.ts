@@ -59,19 +59,8 @@ export default class TaskItemComponent extends Component<TaskItemSignature> {
   }
 
   @action
-  onUpdateDescInputKeyPress(ev: KeyboardEvent) {
-    if (ev.key == 'Enter') {
-      this.onUpdateTask();
-    }
-  }
-
-  @action
-  onChangeTaskDescInput(ev: Event) {
-    assert(
-      `Expected input event handler to be used an an 'input' element,`,
-      ev.target instanceof HTMLInputElement,
-    );
-    this.updatedTaskDesc = ev.target.value;
+  onUpdateDescInputEnter() {
+    this.onUpdateTask();
   }
 
   @action

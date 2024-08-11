@@ -2,15 +2,14 @@
 
   {{!-- Data --}}
   {{#if this.editMode }}
-    <input 
+    <Input 
       id="update-task-input-{{@task.id}}"
       type="text" 
       class="form-control form-control-sm me-3" 
       placeholder="{{@task.description}}"
-      value="{{ this.updatedTaskDesc }}"
-      {{ on 'input' this.onChangeTaskDescInput }} 
-      {{ on 'keypress' this.onUpdateDescInputKeyPress }}
-    >
+      @value={{ this.updatedTaskDesc }}
+      @enter={{ this.onUpdateDescInputEnter }}
+    />
   {{else}}
     <div class="app-small-text">
       <input class="form-check-input me-1" type="checkbox" value="" checked={{@task.completed}} {{on 'change' this.onToggleDoneTask }}>
