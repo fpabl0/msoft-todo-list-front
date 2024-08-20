@@ -1,7 +1,13 @@
+import type ApolloService from "ember-apollo-client/services/apollo";
+import { queryManager } from 'ember-apollo-client';
+
 import Service from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 
+import loginMutation from "todo-list/gql/mutation/login";
+
 export default class AuthService extends Service {
+  @queryManager apollo?: ApolloService;
   @tracked token: string | null = null;
   userName: string | null = null;
 
@@ -10,8 +16,14 @@ export default class AuthService extends Service {
   }
 
   async login(email: string, password: string): Promise<void> {
+    const data = await this.apollo?.mutate<any>({
+      mutation: loginMutation,
+      variables: { email, password }
+    });
+    // TODO REFACTOR
+    console.log(data.userAccessTokenCreate.userAccessToken);
     console.log(`TODO login `, { email, password });
-    this.token = 'some-token';
+    this.token = data.userAccessTokenCreate.userAccessToken;
     this.userName = email; // TODO set this just as an example
   }
 
