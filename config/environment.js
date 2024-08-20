@@ -21,7 +21,10 @@ module.exports = function (environment) {
 
     apollo: {
       apiURL: 'http://localhost:8080/graphql',
-    }
+    },
+    'ember-local-storage': {
+      includeEmberDataSupport: false
+    },
   };
 
   if (environment === 'development') {

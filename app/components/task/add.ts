@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
-import { tracked } from "@glimmer/tracking";
-import { action } from "@ember/object";
-import { service } from "@ember/service";
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
+import { service } from '@ember/service';
 
-import type TasksService from "todo-list/services/tasks";
+import type TasksService from 'todo-list/services/tasks';
 
 export interface TaskAddSignature {
   // The arguments accepted by the component
@@ -21,7 +21,7 @@ export default class TaskAddComponent extends Component<TaskAddSignature> {
   @tracked newTaskDesc = '';
 
   get disableAddBtn() {
-    return this.newTaskDesc.trim() === "";
+    return this.newTaskDesc.trim() === '';
   }
 
   @action

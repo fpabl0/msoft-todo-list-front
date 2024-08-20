@@ -8,8 +8,8 @@ interface Opts {
 export function queryManager(): ComputedProperty<ApolloService>; // @queryManager() foo, foo: queryManager()
 export function queryManager(
   target: object,
-  propertyKey: string | symbol
+  propertyKey: string | symbol,
 ): void; // @queryManager foo
 export function queryManager<T = ApolloService>(
-  opts: Opts
+  opts: Opts,
 ): ComputedProperty<T>;

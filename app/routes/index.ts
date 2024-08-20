@@ -2,7 +2,7 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
 import type RouterService from '@ember/routing/router-service';
-import type AuthService from "todo-list/services/auth";
+import type AuthService from 'todo-list/services/auth';
 
 export default class IndexRoute extends Route {
   @service router?: RouterService;

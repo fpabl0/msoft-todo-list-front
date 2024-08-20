@@ -5,7 +5,7 @@ declare module 'ember-apollo-client/services/apollo' {
     MutationOptions,
     QueryOptions,
     WatchQueryOptions,
-    SubscriptionOptions
+    SubscriptionOptions,
   } from '@apollo/client/core/watchQueryOptions';
 
   interface Options {
@@ -22,22 +22,22 @@ declare module 'ember-apollo-client/services/apollo' {
 
     public mutate<T = object>(
       ots: MutationOptions,
-      resultKey?: string
+      resultKey?: string,
     ): Promise<T>;
 
     public query<T = object>(
       opts: QueryOptions,
-      resultKey?: string
+      resultKey?: string,
     ): Promise<T>;
 
     public watchQuery<T = object>(
       opts: WatchQueryOptions,
-      resultKey?: string
+      resultKey?: string,
     ): Promise<T>;
 
     public subscribe<T = object>(
       opts: SubscriptionOptions,
-      resultKey?: string
+      resultKey?: string,
     ): Promise<T>;
   }
 }

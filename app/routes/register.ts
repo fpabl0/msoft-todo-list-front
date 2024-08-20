@@ -1,3 +1,3 @@
-import { UnauthenticatedRoute } from "todo-list/utils/unauthenticated-route";
+import { UnauthenticatedRoute } from 'todo-list/utils/unauthenticated-route';
 
-export default class RegisterRoute extends UnauthenticatedRoute { }
+export default class RegisterRoute extends UnauthenticatedRoute {}

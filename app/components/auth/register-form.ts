@@ -60,7 +60,7 @@ export default class AuthRegisterFormComponent extends Component<AuthRegisterFor
       );
       this.router?.transitionTo('login');
     } catch (e) {
-      // TODO
+      console.log(e);
     }
   }
 }

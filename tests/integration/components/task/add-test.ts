@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'todo-list/tests/helpers';
 import { click, render, triggerKeyEvent, typeIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-import { MockTasksService } from "todo-list/tests/helpers/mock-tasks-service";
+import { MockTasksService } from 'todo-list/tests/helpers/mock-tasks-service';
 
 module('Integration | Component | task/add', function (hooks) {
   setupRenderingTest(hooks);

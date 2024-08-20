@@ -43,7 +43,7 @@ export default class AuthLoginFormComponent extends Component<AuthLoginFormSigna
       );
       this.router!.transitionTo('home');
     } catch (e) {
-      // TODO
+      console.log(e);
     }
   }
 }
