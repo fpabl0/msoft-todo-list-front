@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import type ApolloService from 'ember-apollo-client/services/apollo';
 import { queryManager } from 'ember-apollo-client';
 import { storageFor } from 'ember-local-storage';
+import { jwtDecode } from "jwt-decode";
 
 import loginMutation from 'todo-list/gql/mutation/login';
 import registerMutation from "todo-list/gql/mutation/register";
@@ -15,8 +16,12 @@ export default class AuthService extends Service {
   @tracked token: string | null = null;
   userName: string | null = null;
 
-  get isLoggedIn() {
+  constructor() {
+    super(...arguments);
     this.loadCreds();
+  }
+
+  get isLoggedIn() {
     return this.token !== null;
   }
 
@@ -31,7 +36,7 @@ export default class AuthService extends Service {
     }
     this.token = data.userAccessTokenCreate.userAccessToken;
     this.userName = data.userAccessTokenCreate.user.name;
-    this.saveCreds();
+    this.set<any>("authStorage.token", this.token);
   }
 
   async register(name: string, email: string, password: string): Promise<void> {
@@ -51,14 +56,12 @@ export default class AuthService extends Service {
     this.authStorage.clear();
   }
 
-  saveCreds() {
-    this.set<any>('authStorage.user', this.userName);
-    this.set<any>("authStorage.token", this.token);
-  }
-
   loadCreds() {
-    this.userName = this.authStorage.get('user') ?? null;
     this.token = this.authStorage.get('token') ?? null;
+    this.userName = null;
+    if (this.token === null) return;
+    const claims = jwtDecode<{ username: string; }>(this.token);
+    this.userName = claims.username;
   }
 }
 
