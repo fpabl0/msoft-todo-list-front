@@ -1,9 +1,12 @@
-import { action } from '@ember/object';
-import type RouterService from '@ember/routing/router-service';
-import { service } from '@ember/service';
 import Component from '@glimmer/component';
-import { FieldData, FormData } from 'todo-list/bmodels/form-data';
+import type RouterService from '@ember/routing/router-service';
+import { action } from '@ember/object';
+import { service } from '@ember/service';
+
+import Swal from 'sweetalert2';
+
 import type AuthService from 'todo-list/services/auth';
+import { FieldData, FormData } from 'todo-list/bmodels/form-data';
 import appValidators from 'todo-list/validators/app-validators';
 
 export interface AuthLoginFormSignature {
@@ -43,7 +46,7 @@ export default class AuthLoginFormComponent extends Component<AuthLoginFormSigna
       );
       this.router!.transitionTo('home');
     } catch (e) {
-      console.log(e);
+      Swal.fire({ title: 'Error', text: `${e}`, icon: 'error' });
     }
   }
 }

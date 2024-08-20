@@ -117,6 +117,7 @@
     "@apollo/client": "^3.11.4",
     "graphql-tag": "^2.12.6",
     "graphql-tools": "^9.0.1",
-    "jwt-decode": "^4.0.0"
+    "jwt-decode": "^4.0.0",
+    "sweetalert2": "^11.12.4"
   }
 }

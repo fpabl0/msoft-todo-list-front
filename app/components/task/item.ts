@@ -4,6 +4,8 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { service } from '@ember/service';
 
+import Swal from 'sweetalert2';
+
 import type { Task } from 'todo-list/bmodels/task';
 import type TasksService from 'todo-list/services/tasks';
 
@@ -51,11 +53,15 @@ export default class TaskItemComponent extends Component<TaskItemSignature> {
   @action
   async onUpdateTask() {
     if (this.updatedTaskDesc.trim() == '') return;
-    await this.tasksService?.updateTaskDesc(
-      this.args.task.id,
-      this.updatedTaskDesc,
-    );
-    this.onExitEditMode();
+    try {
+      await this.tasksService?.updateTaskDesc(
+        this.args.task.id,
+        this.updatedTaskDesc,
+      );
+      this.onExitEditMode();
+    } catch (e) {
+      Swal.fire({ title: 'Error', text: `${e}`, icon: 'error' });
+    }
   }
 
   @action
@@ -65,7 +71,11 @@ export default class TaskItemComponent extends Component<TaskItemSignature> {
 
   @action
   async onDeleteTask() {
-    await this.tasksService?.deleteTask(this.args.task.id);
+    try {
+      await this.tasksService?.deleteTask(this.args.task.id);
+    } catch (e) {
+      Swal.fire({ title: 'Error', text: `${e}`, icon: 'error' });
+    }
   }
 
   @action
@@ -74,9 +84,13 @@ export default class TaskItemComponent extends Component<TaskItemSignature> {
       `Expected input event handler to be used an an 'input' element,`,
       ev.target instanceof HTMLInputElement,
     );
-    await this.tasksService?.updateTaskComplete(
-      this.args.task.id,
-      ev.target.checked,
-    );
+    try {
+      await this.tasksService?.updateTaskComplete(
+        this.args.task.id,
+        ev.target.checked,
+      );
+    } catch (e) {
+      Swal.fire({ title: 'Error', text: `${e}`, icon: 'error' });
+    }
   }
 }
