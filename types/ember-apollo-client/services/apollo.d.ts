@@ -1,6 +1,7 @@
 declare module 'ember-apollo-client/services/apollo' {
   import Service from '@ember/service';
 
+  import type { ApolloCache, ApolloClientOptions, ApolloLink } from "@apollo/client";
   import {
     MutationOptions,
     QueryOptions,
@@ -16,9 +17,10 @@ declare module 'ember-apollo-client/services/apollo' {
   export default class ApolloService extends Service {
     public options: Options;
 
-    public clientOptions(): object;
+    public clientOptions(): ApolloClientOptions;
 
-    public link(): unknown;
+    public cache(): ApolloCache;
+    public link(): ApolloLink;
 
     public mutate<T = object>(
       ots: MutationOptions,

@@ -23,7 +23,7 @@ module.exports = function (environment) {
       apiURL: 'http://localhost:8080/graphql',
     },
     'ember-local-storage': {
-      includeEmberDataSupport: false
+      includeEmberDataSupport: false,
     },
   };
 

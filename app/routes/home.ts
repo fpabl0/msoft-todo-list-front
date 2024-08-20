@@ -9,9 +9,6 @@ export default class HomeRoute extends AuthenticatedRoute {
   @service('tasks') tasksService?: TasksService;
 
   async model() {
-    await this.tasksService?.loadTasks([
-      new Task(1, { description: 'Comprar galletas', completed: false }),
-      new Task(2, { description: 'Vender radio', completed: true }),
-    ]);
+    await this.tasksService?.loadTasks();
   }
 }

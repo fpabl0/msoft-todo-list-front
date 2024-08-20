@@ -4,10 +4,10 @@ import { tracked } from '@glimmer/tracking';
 import type ApolloService from 'ember-apollo-client/services/apollo';
 import { queryManager } from 'ember-apollo-client';
 import { storageFor } from 'ember-local-storage';
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from 'jwt-decode';
 
-import loginMutation from 'todo-list/gql/mutation/login';
-import registerMutation from "todo-list/gql/mutation/register";
+import loginMutation from 'todo-list/gql/mutations/login';
+import registerMutation from 'todo-list/gql/mutations/register';
 
 export default class AuthService extends Service {
   @queryManager apollo?: ApolloService;
@@ -36,7 +36,7 @@ export default class AuthService extends Service {
     }
     this.token = data.userAccessTokenCreate.userAccessToken;
     this.userName = data.userAccessTokenCreate.user.name;
-    this.set<any>("authStorage.token", this.token);
+    this.set<any>('authStorage.token', this.token);
   }
 
   async register(name: string, email: string, password: string): Promise<void> {
